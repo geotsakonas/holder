@@ -200,3 +200,482 @@ Color.prototype.blendAlpha = function(color) {
 };
 
 module.exports = Color;
+
+
+this.original = color;
+
+    if (color.charAt(0) === '#') {
+        color = color.slice(1);
+    }
+
+    if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));
+};
+
+//todo: jsdocs
+Color.rgb2hex = function(r, g, b) {
+    function format (decimal) {
+        var hex = (decimal | 0).toString(16);
+        if (decimal < 16) {
+            hex = '0' + hex;
+        }
+        return hex;
+    }
+
+    return [r, g, b].map(format).join('');
+};
+
+//todo: jsdocs
+Color.hsl2rgb = function (h, s, l) {
+    var H = h / 60;
+    var C = (1 - Math.abs(2 * l - 1)) * s;
+    var X = C * (1 - Math.abs(parseInt(H) % 2 - 1));
+    var m = l - (C / 2);
+
+    var r = 0, g = 0, b = 0;
+
+    if (H >= 0 && H < 1) {
+        r = C;
+        g = X;
+    } else if (H >= 1 && H < 2) {
+        r = X;
+        g = C;
+    } else if (H >= 2 && H < 3) {
+        g = C;
+        b = X;
+    } else if (H >= 3 && H < 4) {
+        g = X;
+        b = C;
+    } else if (H >= 4 && H < 5) {
+        r = X;
+        b = C;
+    } else if (H >= 5 && H < 6) {
+        r = C;
+        b = X;
+    }
+
+    r += m;
+    g += m;
+    b += m;
+
+    r = parseInt(r * 255);
+    g = parseInt(g * 255);
+    b = parseInt(b * 255);
+
+    return [r, g, b];
+};
+
+/**
+ * Sets the color from a raw RGB888 integer
+ * @param raw RGB888 representation of color
+ */
+//todo: refactor into a static method
+//todo: factor out individual color spaces
+//todo: add HSL, CIELAB, and CIELUV
+Color.prototype.set = function (val) {
+    this.raw = val;
+
+    var r = (this.raw & 0xFF0000) >> 16;
+    var g = (this.raw & 0x00FF00) >> 8;
+    var b = (this.raw & 0x0000FF);
+
+    // BT.709
+    var y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    var u = -0.09991 * r - 0.33609 * g + 0.436 * b;
+    var v = 0.615 * r - 0.55861 * g - 0.05639 * b;
+
+    this.rgb = {
+      this.original = color;
+
+    if (color.charAt(0) === '#') {
+        color = color.slice(1);
+    }
+
+    if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));
+};
+
+//todo: jsdocs
+Color.rgb2hex = function(r, g, b) {
+    function format (decimal) {
+        var hex = (decimal | 0).toString(16);
+        if (decimal < 16) {
+            hex = '0' + hex;
+        }
+        return hex;
+    }
+
+    return [r, g, b].map(format).join('');
+};
+
+//todo: jsdocs
+Color.hsl2rgb = function (h, s, l) {
+    var H = h / 60;
+    var C = (1 - Math.abs(2 * l - 1)) * s;
+    var X = C * (1 - Math.abs(parseInt(H) % 2 - 1));
+    var m = l - (C / 2);
+
+    var r = 0, g = 0, b = 0;
+
+    if (H >= 0 && H < 1) {
+        r = C;
+        g = X;
+    } else if (H >= 1 && H < 2) {
+        r = X;
+        g = C;
+    } else if (H >= 2 && H < 3) {
+        g = C;
+        b = X;
+    } else if (H >= 3 && H < 4) {
+        g = X;
+        b = C;
+    } else if (H >= 4 && H < 5) {
+        r = X;
+        b = C;
+    } else if (H >= 5 && H < 6) {
+        r = C;
+        b = X;
+    }
+
+    r += m;
+    g += m;
+    b += m;
+
+    r = parseInt(r * 255);
+    g = parseInt(g * 255);
+    b = parseInt(b * 255);
+
+    return [r, g, b];
+};
+
+/**
+ * Sets the color from a raw RGB888 integer
+ * @param raw RGB888 representation of color
+ */
+//todo: refactor into a static method
+//todo: factor out individual color spaces
+//todo: add HSL, CIELAB, and CIELUV
+Color.prototype.set = function (val) {
+    this.raw = val;
+
+    var r = (this.raw & 0xFF0000) >> 16;
+    var g = (this.raw & 0x00FF00) >> 8;
+    var b = (this.raw & 0x0000FF);
+
+    // BT.709
+    var y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    var u = -0.09991 * r - 0.33609 * g + 0.436 * b;
+    var v = 0.615 * r - 0.55861 * g - 0.05639 * b;
+
+    this.rgb = {this.original = color;
+
+    if (color.charAt(0) === '#') {
+        color = color.slice(1);
+    }
+
+    if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));
+};
+
+//todo: jsdocs
+Color.rgb2hex = function(r, g, b) {
+    function format (decimal) {
+        var hex = (decimal | 0).toString(16);
+        if (decimal < 16) {
+            hex = '0' + hex;
+        }
+        return hex;
+    }
+
+    return [r, g, b].map(format).join('');
+};
+
+//todo: jsdocs
+Color.hsl2rgb = function (h, s, l) {
+    var H = h / 60;
+    var C = (1 - Math.abs(2 * l - 1)) * s;
+    var X = C * (1 - Math.abs(parseInt(H) % 2 - 1));
+    var m = l - (C / 2);
+
+    var r = 0, g = 0, b = 0;
+
+    if (H >= 0 && H < 1) {
+        r = C;
+        g = X;
+    } else if (H >= 1 && H < 2) {
+        r = X;
+        g = C;
+    } else if (H >= 2 && H < 3) {
+        g = C;
+        b = X;
+    } else if (H >= 3 && H < 4) {
+        g = X;
+        b = C;
+    } else if (H >= 4 && H < 5) {
+        r = X;
+        b = C;
+    } else if (H >= 5 && H < 6) {
+        r = C;
+        b = X;
+    }
+
+    r += m;
+    g += m;
+    b += m;
+
+    r = parseInt(r * 255);
+    g = parseInt(g * 255);
+    b = parseInt(b * 255);
+
+    return [r, g, b];
+};
+
+/**
+ * Sets the color from a raw RGB888 integer
+ * @param raw RGB888 representation of color
+ */
+//todo: refactor into a static method
+//todo: factor out individual color spaces
+//todo: add HSL, CIELAB, and CIELUV
+Color.prototype.set = function (val) {
+    this.raw = val;
+
+    var r = (this.raw & 0xFF0000) >> 16;
+    var g = (this.raw & 0x00FF00) >> 8;
+    var b = (this.raw & 0x0000FF);
+
+    // BT.709
+    var y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    var u = -0.09991 * r - 0.33609 * g + 0.436 * b;
+    var v = 0.615 * r - 0.55861 * g - 0.05639 * b;
+
+    this.rgb = {this.original = color;
+
+    if (color.charAt(0) === '#') {
+        color = color.slice(1);
+    }
+
+    if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));
+};
+
+//todo: jsdocs
+Color.rgb2hex = function(r, g, b) {
+    function format (decimal) {
+        var hex = (decimal | 0).toString(16);
+        if (decimal < 16) {
+            hex = '0' + hex;
+        }
+        return hex;
+    }
+
+    return [r, g, b].map(format).join('');
+};
+
+//todo: jsdocs
+Color.hsl2rgb = function (h, s, l) {
+    var H = h / 60;
+    var C = (1 - Math.abs(2 * l - 1)) * s;
+    var X = C * (1 - Math.abs(parseInt(H) % 2 - 1));
+    var m = l - (C / 2);
+
+    var r = 0, g = 0, b = 0;
+
+    if (H >= 0 && H < 1) {
+        r = C;
+        g = X;
+    } else if (H >= 1 && H < 2) {
+        r = X;
+        g = C;
+    } else if (H >= 2 && H < 3) {
+        g = C;
+        b = X;
+    } else if (H >= 3 && H < 4) {
+        g = X;
+        b = C;
+    } else if (H >= 4 && H < 5) {
+        r = X;
+        b = C;
+    } else if (H >= 5 && H < 6) {
+        r = C;
+        b = X;
+    }
+
+    r += m;
+    g += m;
+    b += m;
+
+    r = parseInt(r * 255);
+    g = parseInt(g * 255);
+    b = parseInt(b * 255);
+
+    return [r, g, b];
+};
+
+/**
+ * Sets the color from a raw RGB888 integer
+ * @param raw RGB888 representation of color
+ */
+//todo: refactor into a static method
+//todo: factor out individual color spaces
+//todo: add HSL, CIELAB, and CIELUV
+Color.prototype.set = function (val) {
+    this.raw = val;
+
+    var r = (this.raw & 0xFF0000) >> 16;
+    var g = (this.raw & 0x00FF00) >> 8;
+    var b = (this.raw & 0x0000FF);
+
+    // BT.709
+    var y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    var u = -0.09991 * r - 0.33609 * g + 0.436 * b;
+    var v = 0.615 * r - 0.55861 * g - 0.05639 * b;
+
+    this.rgb = {this.original = color;
+
+    if (color.charAt(0) === '#') {
+        color = color.slice(1);
+    }
+
+    if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));
+};
+
+//todo: jsdocs
+Color.rgb2hex = function(r, g, b) {
+    function format (decimal) {
+        var hex = (decimal | 0).toString(16);
+        if (decimal < 16) {
+            hex = '0' + hex;
+        }
+        return hex;
+    }
+
+    return [r, g, b].map(format).join('');
+};
+
+//todo: jsdocs
+Color.hsl2rgb = function (h, s, l) {
+    var H = h / 60;
+    var C = (1 - Math.abs(2 * l - 1)) * s;
+    var X = C * (1 - Math.abs(parseInt(H) % 2 - 1));
+    var m = l - (C / 2);
+
+    var r = 0, g = 0, b = 0;
+
+    if (H >= 0 && H < 1) {
+        r = C;
+        g = X;
+    } else if (H >= 1 && H < 2) {
+        r = X;
+        g = C;
+    } else if (H >= 2 && H < 3) {
+        g = C;
+        b = X;
+    } else if (H >= 3 && H < 4) {
+        g = X;
+        b = C;
+    } else if (H >= 4 && H < 5) {
+        r = X;
+        b = C;
+    } else if (H >= 5 && H < 6) {
+        r = C;
+        b = X;
+    }
+
+    r += m;
+    g += m;
+    b += m;
+
+    r = parseInt(r * 255);
+    g = parseInt(g * 255);
+    b = parseInt(b * 255);
+
+    return [r, g, b];
+};
+
+/**
+ * Sets the color from a raw RGB888 integer
+ * @param raw RGB888 representation of color
+ */
+//todo: refactor into a static method
+//todo: factor out individual color spaces
+//todo: add HSL, CIELAB, and CIELUV
+Color.prototype.set = function (val) {
+    this.raw = val;
+
+    var r = (this.raw & 0xFF0000) >> 16;
+    var g = (this.raw & 0x00FF00) >> 8;
+    var b = (this.raw & 0x0000FF);
+
+    // BT.709
+    var y = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+    var u = -0.09991 * r - 0.33609 * g + 0.436 * b;
+    var v = 0.615 * r - 0.55861 * g - 0.05639 * b;
+
+    this.rgb = {
