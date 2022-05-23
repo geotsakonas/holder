@@ -25,6 +25,189 @@ var Color = function(color, options) {
     }
 
     this.set(parseInt(color, 16));
+  if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));if (/[^a-f0-9]+/i.test(color)) return;
+
+    if (color.length === 3) {
+        color = color.replace(/./g, '$&$&');
+    }
+
+    if (color.length !== 6) return;
+
+    this.alpha = 1;
+
+    if (options && options.alpha) {
+        this.alpha = options.alpha;
+    }
+
+    this.set(parseInt(color, 16));
 };
 
 //todo: jsdocs
